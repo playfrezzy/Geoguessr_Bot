@@ -4,6 +4,7 @@ from io import BytesIO
 from openai import OpenAI
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, QObject
+from PyQt5.QtGui import QIcon
 
 from ui_mainwindow import Ui_MainWindow
 
@@ -74,6 +75,11 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
+    #app.setWindowIcon(QIcon("icon.svg"))
+    with open("style.css", "r") as file:
+        app.setStyleSheet(file.read())
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
