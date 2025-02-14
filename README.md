@@ -45,9 +45,3 @@ Simply launch the ```GeoGuessr Bot.exe``` file. Click the "Take Screenshot and P
    venv\Scripts\activate     # On Windows```
 3. Install the dependencies:
    ```pip install -r requirements.txt```
-## Usage
-
-1. Update the OpenAI API key in the code.
-2. Run the application:
-   ```python main.py```
-3. Click the "Take Screenshot and Process" button to capture the screen, process the image, and display the location guess.
