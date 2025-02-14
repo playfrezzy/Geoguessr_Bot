@@ -8,6 +8,23 @@ A simple tool that captures a screenshot, crops a defined area, encodes it in Ba
 - **Screenshot & Crop:** Uses pyautogui and Pillow.
 - **API Integration:** Sends the processed image to ChatGPT for location guessing.
 
+## Usage
+### 1. Set Up the API Key:
+This bot requires an OpenAI API key to function. Set it as a Windows environment variable by running:
+
+```setx OPENAI_API_KEY "your-api-key"```
+
+Restart your system or open a new terminal for the changes to take effect.
+
+### 2. Run the Application:
+Simply launch the ```GeoGuessr Bot.exe``` file. Click the "Take Screenshot and Process" button, and the bot will capture a screenshot, process the image, and send it to the ChatGPT API for location estimation. The result will be displayed in the application window.
+
+### 3. Troubleshooting:
+
+- Ensure your API key is set correctly.
+- Check your internet connection.
+- If the application doesn’t start, try running it as an administrator.
+
 ## Requirements
 
 - Python 3.6+
