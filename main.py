@@ -9,6 +9,15 @@ from PyQt5.QtGui import QIcon
 from ui_mainwindow import Ui_MainWindow
 
 
+def get_resource_path(relative_path):
+    """ PyInstaller ile paketlenmiş dosyalar için dosya yolu alır """
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS  # PyInstaller'in geçici dosya konumu
+    else:
+        base_path = os.path.abspath(".")  # Normal geliştirme ortamındaki konum
+    return os.path.join(base_path, relative_path)
+
+
 class Worker(QObject):
     finished = pyqtSignal(str)
 
@@ -20,7 +29,7 @@ class Worker(QObject):
                 model="gpt-4o",
                 messages=[
                     {"role": "system",
-                     "content": "You are a guessr who guesses locations from photos. You will answer briefly with a name of region such as 'Southeast France'. Finally, ignore the map in the bottom right and the text in the top left."
+                     "content": "You are a guessr who guesses locations from photos. You will answer briefly with a name of region of a country in two words such as 'Southeast France'. Make 3 of these and rank them according to their probabilities. Finally, ignore the map in the bottom right and the text in the top left."
                      },
                     {
                         "role": "user",
@@ -76,8 +85,11 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    #app.setWindowIcon(QIcon("icon.svg"))
-    with open("style.css", "r") as file:
+    icon_path = get_resource_path("icon.svg")
+    app.setWindowIcon(QIcon(icon_path))
+
+    style_path = get_resource_path("style.css")
+    with open(style_path, "r") as file:
         app.setStyleSheet(file.read())
 
     window = MainWindow()
